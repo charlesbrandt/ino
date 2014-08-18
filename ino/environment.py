@@ -334,15 +334,15 @@ class Environment(dict):
         self.find_arduino_file('version.txt', ['lib'],
                                human_name='Arduino lib version file (version.txt)')
 
-        if 'arduino_lib_version' not in self:
+        if '_arduino_lib_version' not in self:
             with open(self['version.txt']) as f:
                 print 'Detecting Arduino software version ... ',
                 v_string = f.read().strip()
                 v = Version.parse(v_string)
-                self['arduino_lib_version'] = v
+                self['_arduino_lib_version'] = v
                 print colorize("%s (%s)" % (v, v_string), 'green')
 
-        return self['arduino_lib_version']
+        return self['_arduino_lib_version']
 
 
 class BoardModels(OrderedDict):
